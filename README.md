@@ -21,7 +21,7 @@ Configure in config.neon
 
 ```yml
 gaufrette:
-	# Folder for copying assets
+	# Folder for asset copies
 	assets:
 		directory: '.../assets'
 		web: '<basePath>/assets'
@@ -72,7 +72,7 @@ class HomePresenter extends Presenter
 }
 ```
 
-In templates then:
+In templates then use:
 ```sh
 <link href="{asset 'css/bootstrap.min.css'}" rel="stylesheet">
 ```
