@@ -1,0 +1,17 @@
+{
+	"name": "echo511/gaufrette",
+	"type": "project",
+	"authors": [
+		{
+			"name": "Nikolas Tsiongas"
+		}
+	],
+	"require": {
+		"php": ">= 5.3",
+		"nette/nette": ">= 2.2.0",
+		"knplabs/gaufrette": "0.2.x-dev"
+	},
+	"require-dev": {
+		"nette/tester": "1.2.*@dev"
+	}
+}
