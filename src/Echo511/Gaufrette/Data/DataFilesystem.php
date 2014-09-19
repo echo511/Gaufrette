@@ -2,6 +2,7 @@
 
 namespace Echo511\Gaufrette\Data;
 
+use Echo511\Gaufrette\Adapter\Uploadable;
 use Echo511\Gaufrette\Filesystem;
 
 /**
@@ -27,6 +28,15 @@ class DataFilesystem extends Filesystem
 			$this->subsystems[$key] = new DataFilesystem($this->adapter->getSubadapter($key));
 		}
 		return $this->subsystems[$key];
+	}
+
+
+
+	public function move($key, $tmpName)
+	{
+		if ($this->adapter instanceof Uploadable) {
+			$this->adapter->move($key, $tmpName);
+		}
 	}
 
 

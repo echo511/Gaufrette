@@ -2,16 +2,19 @@
 
 namespace Echo511\Gaufrette\Adapter;
 
+use Echo511\Gaufrette\File;
 use Exception;
+use Gaufrette\Adapter\FileFactory;
 use Gaufrette\Adapter\Local as GLocal;
 use Gaufrette\Exception\FileNotFound;
+use Gaufrette\Filesystem;
 
 /**
  * Local adapter enhanced with linkable support.
  * 
  * @author Nikolas Tsiongas
  */
-class Local extends GLocal implements Linkable
+class Local extends GLocal implements Linkable, Uploadable, FileFactory
 {
 
 	/** @var string */
@@ -62,6 +65,23 @@ class Local extends GLocal implements Linkable
 		}
 
 		throw new FileNotFound($key);
+	}
+
+
+
+	public function move($key, $tmpName)
+	{
+		$path = $this->computePath($key);
+		if (!file_exists($path)) {
+			rename($tmpName, $path);
+		}
+	}
+
+
+
+	public function createFile($key, Filesystem $filesystem)
+	{
+		return new File($key, $filesystem);
 	}
 
 
