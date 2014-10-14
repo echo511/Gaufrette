@@ -6,6 +6,7 @@
 			"name": "Nikolas Tsiongas"
 		}
 	],
+    "license": "MIT",
 	"require": {
 		"php": ">= 5.3",
 		"nette/nette": ">= 2.2.0",
