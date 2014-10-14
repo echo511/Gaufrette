@@ -22,7 +22,7 @@ class WarmCommand extends Command
 
 	public function __construct(ExtensionsAssets $extensionsData)
 	{
-		parent::__construct($name);
+		parent::__construct();
 		$this->extensionsData = $extensionsData;
 	}
 
