@@ -11,6 +11,8 @@ interface Uploadable
 {
 
 	/**
+	 * Move uploaded file to another system.
+	 *
 	 * @param string $key
 	 * @param string $tmpName
 	 */
