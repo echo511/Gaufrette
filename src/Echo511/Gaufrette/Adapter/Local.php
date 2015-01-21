@@ -43,24 +43,25 @@ class Local extends GLocal implements Linkable, Uploadable, Subadapterable, File
 	public function getSubadapter($key, $create = true, $mode = 0777)
 	{
 		$key = ltrim($key, '/');
-		return new Local($this->directory . '/' . $key, $this->getUrl($key), $create, $mode);
+		return new Local($this->directory . '/' . $key, $this->getUrl($key, !$create), $create, $mode);
 	}
 
 
 
 	/**
 	 * @param string $key
+	 * @param bool $mustExist
 	 * @return string
 	 * @throws Exception Thrown when base path was not provided.
 	 * @throws FileNotFound
 	 */
-	public function getUrl($key)
+	public function getUrl($key, $mustExist = true)
 	{
 		if (!$this->basePath) {
 			throw new Exception('Cannot link to file. No base path provided.');
 		}
 
-		if ($this->exists($key)) {
+		if ($this->exists($key) || !$mustExist) {
 			$parts = explode('/', $key);
 			foreach($parts as $pos => $part) {
 				$parts[$pos] = rawurlencode($part);
